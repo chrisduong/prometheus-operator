@@ -1,5 +1,5 @@
-# Chart: stable/prometheus-operator, Version: 0.1.30
-# AppVersion: 0.25.0, NS: Ops
+# Chart: stable/prometheus-operator, Version: 1.5.1
+# AppVersion: 0.26.0, NS: Ops
 
 # TODO:
 # - Add custom Rule as an PrometheusRule object
@@ -166,7 +166,7 @@ alertmanager:
     ##
     image:
       repository: quay.io/prometheus/alertmanager
-      tag: v0.15.3
+      # tag: v0.15.3
 
     ## Secrets is a list of Secrets in the same namespace as the Alertmanager object, which shall be mounted into the
     ## Alertmanager Pods. The Secrets are mounted into /etc/alertmanager/secrets/.
@@ -664,7 +664,7 @@ prometheus:
     ##
     image:
       repository: quay.io/prometheus/prometheus
-      tag: v2.5.0
+      tag: v2.6.0 # NOTE: the Chart actually forgot to upgrade to this version
 
     #  repository: quay.io/coreos/prometheus
     #  tag: v2.5.0
