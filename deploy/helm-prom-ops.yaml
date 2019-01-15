@@ -1,6 +1,9 @@
 # Chart: stable/prometheus-operator, Version: 0.1.30
 # AppVersion: 0.25.0, NS: Ops
 
+# TODO:
+# - Add custom Rule as an PrometheusRule object
+
 # Default values for prometheus-operator.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -432,9 +435,8 @@ kube-state-metrics:
 
 ## Deploy node exporter as a daemonset to all nodes
 ##
-## TODO: enable it later, after removing the old one
 nodeExporter:
-  enabled: false
+  enabled: true
 
   ## Use the value configured in prometheus-node-exporter.podLabels
   ##
@@ -761,7 +763,8 @@ prometheus:
     paused: false
 
     ## Number of Prometheus replicas desired
-    ## TODO: explore case with multiple replicas
+    ## SEE: the High Availibility section
+    # 
     replicas: 1
 
     ## Log level for Prometheus be configured in
