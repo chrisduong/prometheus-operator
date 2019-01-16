@@ -1,0 +1,47 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: etcd-prometheus
+  namespace: ops
+  labels:
+    app: exporter-kube-etcd
+spec:
+  alerting:
+    alertmanagers:
+    - name: prom-ops-prometheus-operat-alertmanager
+      namespace: ops
+      port: web
+  # NOTE: if having externalURL, it needs to be protected by password
+  externalUrl: http://prometheus-etc.identity.astro.com.my/
+  logLevel: info
+  resources:
+    limit:
+      memory: 300Mi # was 400Mi
+      cpu: 0.3 # was 0.5
+  retention: 30d
+  serviceAccountName: prom-ops-prometheus-operat-prometheus
+  ruleSelector:
+    matchLabels:
+      app: prometheus-operator
+      release: prom-ops
+      rule: etcd
+  serviceMonitorSelector:
+    matchLabels:
+      app: prometheus-operator-kube-etcd
+      release: prom-ops   
+  nodeSelector:
+    node-role.kubernetes.io/master: ""      
+  tolerations:
+    - key: node-role.kubernetes.io/master
+      operator: Exists
+      effect: NoSchedule
+  storage:
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 50Gi
+        storageClassName: encrypted-1a
+  version: v2.6.0
