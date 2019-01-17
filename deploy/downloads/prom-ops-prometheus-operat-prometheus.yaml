@@ -1,8 +1,6 @@
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
-  creationTimestamp: "2018-12-20T09:41:25Z"
-  generation: 1
   labels:
     app: prometheus-operator-prometheus
     chart: prometheus-operator-1.5.1
@@ -11,9 +9,6 @@ metadata:
     team: identity
   name: prom-ops-prometheus-operat-prometheus
   namespace: ops
-  resourceVersion: "49321625"
-  selfLink: /apis/monitoring.coreos.com/v1/namespaces/ops/prometheuses/prom-ops-prometheus-operat-prometheus
-  uid: 6ae69338-043b-11e9-9477-06a5fd5d9468
 spec:
   alerting:
     alertmanagers:
