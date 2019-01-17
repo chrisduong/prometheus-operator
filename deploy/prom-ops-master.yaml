@@ -28,7 +28,12 @@ spec:
   serviceMonitorSelector:
     matchLabels:
       app: prometheus-operator-kube-etcd
-      release: prom-ops   
+      release: prom-ops
+  scrapeInterval: 30s
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    fsGroup: 2000  
   nodeSelector:
     node-role.kubernetes.io/master: ""      
   tolerations:
