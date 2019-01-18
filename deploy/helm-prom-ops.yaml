@@ -724,8 +724,11 @@ prometheus:
     ## If unspecified the release `app` and `release` will be used as the label selector
     ## to load rules
     ##
-    ruleSelector: {}
-      # TODO: Select default rules only but the
+    ruleSelector:
+      matchLabels:
+        app: prometheus-operator
+        rule: all
+     
     ## Example which select all prometheusrules resources
     ## with label "prometheus" with values any of "example-rules" or "example-rules-2"
     # ruleSelector:
