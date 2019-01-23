@@ -10,4 +10,6 @@ File `helm-prom-ops.yaml` for deploying Prometheus Operator.
 
 ## TODOs
 
+- Check Grafana graphs availability.
 - How to disable ETCD scrape in non-master instance.
+- How to aggregate Alerts between 2 Prom instances.
